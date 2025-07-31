@@ -1,0 +1,6 @@
+Java is awesome.
+This file was created by the program.
+We are reading it line by line.
+
+Appended line 1.
+Appended line 2.

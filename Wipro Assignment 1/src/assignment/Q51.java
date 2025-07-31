@@ -1,0 +1,54 @@
+package assignment;
+
+import java.sql.*;
+
+public class Q51 {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/test?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+        String username = "root";
+        String password = "Prasadrao@1234"; // ← Replace with your real password
+
+        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+            System.out.println("✅ Connected to database.");
+
+            // 1. INSERT
+            String insertQuery = "INSERT INTO students (id, name, age) VALUES (?, ?, ?)";
+            try (PreparedStatement stmt = conn.prepareStatement(insertQuery)) {
+                stmt.setInt(1, 1);
+                stmt.setString(2, "Satwik");
+                stmt.setInt(3, 22);
+                stmt.executeUpdate();
+                System.out.println("✅ Record inserted.");
+            }
+
+            // 2. SELECT
+            String selectQuery = "SELECT * FROM students";
+            try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(selectQuery)) {
+                System.out.println("📋 Records in 'students' table:");
+                while (rs.next()) {
+                    System.out.println(rs.getInt("id") + " | " + rs.getString("name") + " | " + rs.getInt("age"));
+                }
+            }
+
+            // 3. UPDATE
+            String updateQuery = "UPDATE students SET age = ? WHERE id = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(updateQuery)) {
+                stmt.setInt(1, 23);
+                stmt.setInt(2, 1);
+                stmt.executeUpdate();
+                System.out.println("✏️ Record updated.");
+            }
+
+            // 4. DELETE
+            String deleteQuery = "DELETE FROM students WHERE id = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(deleteQuery)) {
+                stmt.setInt(1, 1);
+                stmt.executeUpdate();
+                System.out.println("❌ Record deleted.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("❌ Error: " + e.getMessage());
+        }
+    }
+}

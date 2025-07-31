@@ -1,0 +1,48 @@
+package assignment;
+
+import java.util.Scanner;
+
+public class Q9 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double total = 0;
+        char choice = 'Y'; // ✅ Initialize to avoid compiler error
+
+        do {
+            System.out.print("Enter product number (1/2/3): ");
+            int product = scanner.nextInt();
+
+            System.out.print("Enter quantity sold: ");
+            int quantity = scanner.nextInt();
+
+            double price = 0;
+
+            switch (product) {
+                case 1:
+                    price = 22.50;
+                    break;
+                case 2:
+                    price = 44.50;
+                    break;
+                case 3:
+                    price = 9.98;
+                    break;
+                default:
+                    System.out.println("Invalid product number.");
+                    continue;
+            }
+
+            total += price * quantity;
+
+            System.out.print("Do you want to enter another product? (Y/N): ");
+            choice = scanner.next().charAt(0);
+
+        } while (choice == 'Y' || choice == 'y');
+
+        System.out.printf("Total retail value of all products sold: ₹%.2f\n", total);
+    }
+}
+
+
+

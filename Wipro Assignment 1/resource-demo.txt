@@ -1,0 +1,2 @@
+This file uses try-with-resources.
+Resources are auto-closed safely.
