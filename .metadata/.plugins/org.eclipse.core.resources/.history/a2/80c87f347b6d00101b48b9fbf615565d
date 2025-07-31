@@ -1,0 +1,61 @@
+package myjavademos;
+
+// Abstract class
+abstract class Shopping {
+    Shopping() {
+        System.out.println("Abstract class Default Constructor!");
+    }
+
+    void offers() {
+        System.out.println("10-30% discount");
+    }
+
+    abstract void paymentGateway(); // abstract method
+    abstract void delivery();       // abstract method
+}
+
+// Abstract subclass (partially implements)
+abstract class Amazon extends Shopping {
+    @Override
+    void paymentGateway() {
+        System.out.println("Amazon::paytm, paypal!");
+    }
+    // delivery() not implemented → class is still abstract
+}
+
+// Concrete subclass (fully implements)
+class Myntra extends Shopping {
+    @Override
+    void paymentGateway() {
+        System.out.println("Myntra::paytm, paypal!");
+    }
+
+    @Override
+    void delivery() {
+        System.out.println("10 days delivery notice");
+    }
+
+    void feedback() {
+        System.out.println("Good feedback!");
+    }
+}
+
+// Main class
+public class AbstractClassesDemo {
+    public static void main(String[] args) {
+        Myntra m = new Myntra();
+        m.paymentGateway();
+        m.delivery();
+        m.offers();
+        m.feedback();
+
+        // Polymorphism
+        Shopping s = new Myntra();
+        s.paymentGateway();
+        s.delivery();
+        s.offers();
+
+        // Downcasting to call feedback
+        ((Myntra)s).feedback();
+    }
+}

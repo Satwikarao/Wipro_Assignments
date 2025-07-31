@@ -1,0 +1,57 @@
+package myjavademos.myjavademos;
+
+// Anonymous class demo
+
+abstract class Data1 {
+    public abstract void show();
+    public abstract void show222();
+}
+
+interface Inter1 {
+    void disp();
+}
+
+// Interface inside a class
+class Data2 {
+    interface Inter2 {
+        void calling();
+    }
+}
+
+public class AnonymousClasses {
+    public static void main(String[] args) {
+        
+        // Anonymous class extending abstract class
+        Data1 obj = new Data1() {
+            @Override
+            public void show() {
+                System.out.println("Anonymous type:: abstract class object!");
+            }
+
+            @Override
+            public void show222() {
+                System.out.println("Anonymous type:: abstract class object!");
+            }
+        };
+        obj.show();
+        obj.show222();
+
+        // Anonymous class implementing interface
+        Inter1 obj1 = new Inter1() {
+            @Override
+            public void disp() {
+                System.out.println("Anonymous type:: interface object");
+            }
+        };
+        obj1.disp();
+
+        // Anonymous class for interface inside a class
+        Data2.Inter2 s = new Data2.Inter2() {
+            @Override
+            public void calling() {
+                System.out.println("Class inside interface!");
+            }
+        };
+        s.calling();
+    }
+}

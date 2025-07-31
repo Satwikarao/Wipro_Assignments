@@ -1,0 +1,15 @@
+package assignment;
+
+public class Q3 {
+    public static void main(String[] args) 
+    {
+        int totalStudents = 90;
+        int boys = 45;
+        int totalGradeA = totalStudents / 2;
+
+        int boysGrade = 20;  // 50% of 90
+        int girlsGradeA = totalGradeA - boysGradeA;
+
+        System.out.println("Total  girls with grade A: " + girlsGradeA);
+    }
+}

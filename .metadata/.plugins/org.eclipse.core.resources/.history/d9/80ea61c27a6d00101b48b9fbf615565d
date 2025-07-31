@@ -1,0 +1,10 @@
+package myjavademos;
+
+public class AbstractClassesDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

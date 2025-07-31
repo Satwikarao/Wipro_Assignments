@@ -1,0 +1,21 @@
+package assignment;
+
+import java.io.*;
+
+public class Q42 {
+    public static void main(String[] args) {
+        String filename = "data.txt";  // 🔹 Place this file in your project root folder
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+
+            System.out.println("Reading file line by line:");
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+    }
+}

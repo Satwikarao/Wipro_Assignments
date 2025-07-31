@@ -1,0 +1,47 @@
+package assignment;
+
+import java.io.*;
+
+// Serializable class
+class Student implements Serializable {
+    private static final long serialVersionUID = 1L; // version ID for safety
+
+    String name;
+    int age;
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Age : " + age);
+    }
+}
+
+public class Q39 {
+    public static void main(String[] args) {
+        String filename = "student.ser";
+
+        // Create a student object
+        Student student1 = new Student("Aarav", 21);
+
+        // Serialization: Write object to file
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename))) {
+            out.writeObject(student1);
+            System.out.println("Object serialized successfully.");
+        } catch (IOException e) {
+            System.out.println("Serialization error: " + e.getMessage());
+        }
+
+        // Deserialization: Read object from file
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))) {
+            Student student2 = (Student) in.readObject();
+            System.out.println("\nDeserialized Object:");
+            student2.display();
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Deserialization error: " + e.getMessage());
+        }
+    }
+}

@@ -1,0 +1,66 @@
+package myjavademos;
+
+// Abstract class
+abstract class Shopping {
+    // ✅ Correctly placed constructor inside class
+    Shopping() {
+        System.out.println("Abstract class Default Constructor!");
+    }
+
+    void offers() {
+        System.out.println("10-30% discount");
+    }
+
+    abstract void paymentGateway();
+    abstract void delivery();
+}
+
+// Abstract subclass (not used, just shown as example)
+abstract class Amazon extends Shopping {
+    @Override
+    void paymentGateway() {
+        System.out.println("Amazon::paytm, paypal!");
+    }
+    // delivery() not implemented
+}
+
+// Concrete subclass
+class Myntra extends Shopping {
+    Myntra() {
+        super(); // Optional; calls Shopping constructor
+    }
+
+    @Override
+    void paymentGateway() {
+        System.out.println("Myntra::paytm, paypal!");
+    }
+
+    @Override
+    void delivery() {
+        System.out.println("10 days delivery notice");
+    }
+
+    void feedback() {
+        System.out.println("Good feedback!");
+    }
+}
+
+// Main class
+public class AbstractClassesDemo {
+    public static void main(String[] args) {
+        // First object
+        Myntra m = new Myntra();
+        m.paymentGateway();
+        m.delivery();
+        m.offers();
+        m.feedback();
+
+        // Polymorphic object
+        Shopping s = new Myntra(); // new object again
+        s.paymentGateway();
+        s.delivery();
+        s.offers();
+
+        ((Myntra) s).feedback(); // downcasting
+    }
+}

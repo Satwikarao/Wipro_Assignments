@@ -1,0 +1,31 @@
+package assignment;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class Q50 {
+    public static void main(String[] args) {
+        // Replace with your DB details
+        String url = "jdbc:mysql://localhost:3306/your_database_name";
+        String username = "your_username";
+        String password = "your_password";
+
+        try {
+            // Load MySQL JDBC Driver (optional in JDBC 4+)
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Try to connect
+            Connection conn = DriverManager.getConnection(url, username, password);
+
+            if (conn != null) {
+                System.out.println("✅ Connection established successfully!");
+                conn.close();
+            }
+        } catch (ClassNotFoundException e) {
+            System.out.println("JDBC Driver not found. Make sure it's in your classpath.");
+        } catch (SQLException e) {
+            System.out.println("❌ Connection failed: " + e.getMessage());
+        }
+    }
+}

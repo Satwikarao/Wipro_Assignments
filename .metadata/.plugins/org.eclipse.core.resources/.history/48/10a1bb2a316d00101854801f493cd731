@@ -1,0 +1,48 @@
+package assignment;
+
+public class Student {
+    private static int nextRollNo = 1;
+
+    private int rollNo;
+    private String studName;
+    private int marksInEng;
+    private int marksInMaths;
+    private int marksInScience;
+
+    public Student(String studName, int eng, int maths, int science) {
+        this.rollNo = nextRollNo++;
+        this.studName = studName;
+        this.marksInEng = eng;
+        this.marksInMaths = maths;
+        this.marksInScience = science;
+    }
+
+    public int getRollNo() {
+        return rollNo;
+    }
+
+    public String getStudName() {
+        return studName;
+    }
+
+    public int getMarksInEng() {
+        return marksInEng;
+    }
+
+    public int getMarksInMaths() {
+        return marksInMaths;
+    }
+
+    public int getMarksInScience() {
+        return marksInScience;
+    }
+
+    public int getTotalMarks() {
+        return marksInEng + marksInMaths + marksInScience;
+    }
+
+    public double getPercentage() {
+        return getTotalMarks() / 3.0;
+    }
+}
+
